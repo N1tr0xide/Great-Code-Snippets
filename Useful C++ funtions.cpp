@@ -9,11 +9,14 @@ bool CheckStringToInt(string string)
 }
 
 //Check if a number id odd or even
-if (number % 2 == 0)
+void CheckOddOrEven()
 {
-    result = "even";
-}
-else 
-{
-    result = "odd";
+    if (number % 2 == 0)
+    {
+        result = "even";
+    }
+    else 
+    {
+        result = "odd";
+    }
 }
