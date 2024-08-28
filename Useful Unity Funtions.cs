@@ -8,3 +8,10 @@ void ConvertStringToInt()
   }
 }
 
+//rotate gameobject towards target only in the y axis.
+void LookAtConstrained()
+{
+  Quaternion targetRotation = Quaternion.LookRotation(_playerVision.Target.transform.position - transform.position, Vector3.up);
+  targetRotation = new Quaternion(0, targetRotation.y, 0, targetRotation.w);
+  transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
+}  
