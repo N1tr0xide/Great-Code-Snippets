@@ -1,4 +1,5 @@
 //Check if a string can be converted to an int. DOES NOT check negative numbers.
+#include <string>
 bool CheckStringToInt(string string)
 {
     for (int i = 0; i < string.length(); i++)
