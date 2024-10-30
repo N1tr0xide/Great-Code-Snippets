@@ -21,3 +21,24 @@ void CheckOddOrEven()
         result = "odd";
     }
 }
+
+
+---------------------------------FOR UNREAL ENGINE----------------------------------
+
+    
+// Damage Taken function
+#include "CustomGameMode.h"
+#include "Kismet/GameplayStatics.h"
+    
+void ClassHere::DamageTaken(AActor* damagedActor, float damage, const UDamageType* damageType, AController* instigator, AActor* damageCauser)
+{
+    health -= damage;
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 3, FColor::Red, FString::Printf(TEXT("%s health %f"), *GetOwner()->GetName(), health)); //Display health messsage
+    if (health > 0) return;
+    
+    if (damagedActor) //Call handle actor death for a custom game mode
+    {
+    	ACustomGameMode* customGameMode = Cast<ACustomGameMode>(UGameplayStatics::GetGameMode(this));
+    	if (customGameMode) customGameMode->HandleActorDeath(damagedActor);
+    }
+}
